@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PenguinMovement : BaseMovenment
 {
@@ -10,23 +9,10 @@ public class PenguinMovement : BaseMovenment
         Run();
     }
 
-    public void OnMove(InputValue value)
-    {
-        run = NormalizeInput(value.Get<Vector2>());
-    }
-
-    private Vector2 NormalizeInput(Vector2 input)
-    {
-        float normalizedX = input.x > 0.5f ? 1 : (input.x < -0.5f ? -1 : 0);
-        float normalizedY = input.y > 0.5f ? 1 : (input.y < -0.5f ? -1 : 0);
-
-        return new Vector2(normalizedX, normalizedY);
-    }
-
     private void Run()
     {
         FlipPlayer();
-        Vector2 movement = new Vector2(run.x * speed, rigidbody.velocity.y);
+        Vector2 movement = new Vector2(run.x, rigidbody.velocity.y);
         rigidbody.velocity = movement;
         GetComponent<BaseAnimation>().isWalking = rigidbody.velocity.x != 0;
     }
@@ -36,10 +22,25 @@ public class PenguinMovement : BaseMovenment
         if (run.x < 0)
             transform.localScale = new Vector3(-1, 1, 1);
         else if (run.x > 0)
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = Vector2.one;
     }
 
-    private void OnJump()
+    public void OnMoveToRight()
+    {
+        run = new Vector2(speed, 0);
+    }
+
+    public void OnMoveToLeft()
+    {
+        run = new Vector2(-speed, 0);
+    }
+
+    public void OnStop()
+    {
+        run = Vector2.zero;
+    }
+
+    public void OnJump()
     {
         if (IsGrounded())
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);

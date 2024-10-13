@@ -8,26 +8,26 @@ public class PenguinAttack : BaseAttack
     {
         base.Start();
         penguinController = GetComponent<PenguinController>();
-        PenguinAnimation.onStopAttack += StopAttack;
+        PenguinAnimation.onStopAttack += OnStopAttack;
     }
 
-    private void OnAttack()
+    public void OnAttack()
     {
         attack = true;
         penguinController.Attack();
-        AttackSnowman();
+
+        Collider2D snowman = Physics2D.OverlapCircle(transform.position, 2f, snowmanLayer);
+        if (snowman != null)
+            AttackSnowman(snowman.gameObject);
     }
 
-    private void StopAttack()
+    private void OnStopAttack()
     {
         attack = false;
     }
 
-    public void AttackSnowman()
+    private void AttackSnowman(GameObject snowman)
     {
-        Collider2D snowman = Physics2D.OverlapCircle(transform.position, 2f, snowmanLayer);
-
-        if (snowman != null)
-            snowman.GetComponent<SnowmanMovement>().Move(gameObject.transform.position);
+        snowman.GetComponent<SnowmanMovement>().Move(gameObject.transform.position);
     }
 }
