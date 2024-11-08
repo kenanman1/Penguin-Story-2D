@@ -16,7 +16,7 @@ public class PenguinNPCMovenment : BaseMovenment
         walkTime = Random.Range(10, 20);
     }
 
-    protected void Update()
+    protected void FixedUpdate()
     {
         if (!stop)
             Walk();
@@ -71,9 +71,8 @@ public class PenguinNPCMovenment : BaseMovenment
         stayTime = Random.Range(10, 20);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collider.IsTouchingLayers(wallLayerMask))
-            isFacingRight = !isFacingRight;
+        isFacingRight = !isFacingRight;
     }
 }

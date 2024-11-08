@@ -4,7 +4,7 @@ public class PenguinMovement : BaseMovenment
 {
     private Vector2 run;
 
-    protected void Update()
+    protected void FixedUpdate()
     {
         Run();
     }
