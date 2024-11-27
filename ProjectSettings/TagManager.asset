@@ -2,11 +2,13 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags:
   - Ladder
   - Platform
   - snowman
+  - fish
+  - finishQuest
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - Player
   - wall
   - Snowman
-  - 
+  - Collectibles
   - 
   - 
   - 
@@ -56,3 +58,5 @@ TagManager:
   - name: Player
     uniqueID: 1199185543
     locked: 0
+  m_RenderingLayers:
+  - Default

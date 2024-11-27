@@ -2,7 +2,7 @@
 
 public class PenguinNPCAttack : BaseAttack
 {
-    private float attackChance = 0.001f;
+    private float attackChance = 0.002f;
     private float attackCooldown = 10f;
     private PenguinNPCController penguinNPCController;
 

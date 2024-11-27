@@ -26,6 +26,9 @@ public class BaseAnimation : MonoBehaviour
 
     private void HandleJumpAnimation()
     {
+        if (collider == null)
+            return;
+
         bool isGrounded = collider.IsTouchingLayers(mapLayerMask) || collider.IsTouchingLayers(wallLayerMask);
 
         animator.SetBool("jump", !isGrounded);

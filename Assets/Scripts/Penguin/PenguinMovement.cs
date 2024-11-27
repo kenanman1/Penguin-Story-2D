@@ -12,9 +12,9 @@ public class PenguinMovement : BaseMovenment
     private void Run()
     {
         FlipPlayer();
-        Vector2 movement = new Vector2(run.x, rigidbody.velocity.y);
-        rigidbody.velocity = movement;
-        GetComponent<BaseAnimation>().isWalking = rigidbody.velocity.x != 0;
+        Vector2 movement = new Vector2(run.x, rigidbody.linearVelocity.y);
+        rigidbody.linearVelocity = movement;
+        GetComponent<BaseAnimation>().isWalking = rigidbody.linearVelocity.x != 0;
     }
 
     private void FlipPlayer()
@@ -43,6 +43,6 @@ public class PenguinMovement : BaseMovenment
     public void OnJump()
     {
         if (IsGrounded())
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
+            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpSpeed);
     }
 }

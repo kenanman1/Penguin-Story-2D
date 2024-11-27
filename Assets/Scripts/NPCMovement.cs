@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class PenguinNPCMovenment : BaseMovenment
+public class NPCMovenment : BaseMovenment
 {
-    private bool isFacingRight = true;
     public float stayTime;
     public float walkTime;
     public bool stop = false;
@@ -12,8 +11,7 @@ public class PenguinNPCMovenment : BaseMovenment
     {
         base.Start();
         penguinBaseAnimation = GetComponent<BaseAnimation>();
-        stayTime = Random.Range(10, 20);
-        walkTime = Random.Range(10, 20);
+        ResetTimers();
     }
 
     protected void FixedUpdate()
@@ -25,7 +23,6 @@ public class PenguinNPCMovenment : BaseMovenment
     public void StopMovement()
     {
         stop = true;
-        penguinBaseAnimation.isWalking = false;
     }
 
     public void ResumeMovement()
@@ -37,25 +34,10 @@ public class PenguinNPCMovenment : BaseMovenment
     {
         if (walkTime > 0)
         {
-            penguinBaseAnimation.isWalking = true;
-            if (isFacingRight)
-            {
-                transform.localScale = new Vector3(1, 1, 1);
-                transform.Translate(speed * Time.deltaTime, 0, 0);
-            }
-            else
-            {
-                transform.localScale = new Vector3(-1, 1, 1);
-                transform.Translate(-speed * Time.deltaTime, 0, 0);
-            }
-        }
-        Stay();
-    }
-
-    private void Stay()
-    {
-        if (walkTime > 0)
             walkTime -= Time.deltaTime;
+            penguinBaseAnimation.isWalking = true;
+            transform.Translate(speed * Time.deltaTime, 0, 0);
+        }
         else if (stayTime > 0)
         {
             penguinBaseAnimation.isWalking = false;
@@ -73,6 +55,7 @@ public class PenguinNPCMovenment : BaseMovenment
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isFacingRight = !isFacingRight;
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        speed *= -1;
     }
 }
