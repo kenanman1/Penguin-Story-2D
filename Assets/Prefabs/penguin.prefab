@@ -143,7 +143,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &2864315212440455792
 BoxCollider2D:
@@ -293,6 +293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e6d53e2b3a18244aab80924cbca484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectToCollect: {fileID: 5264565877109543586, guid: 72fc7800c5cec4942907b20d5c31d975, type: 3}
   buttonCollect: {fileID: 0}
   tagToCollect: fish
   amountToCollect: 10
+  isStarted: 0

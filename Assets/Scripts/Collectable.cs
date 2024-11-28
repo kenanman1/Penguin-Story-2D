@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
@@ -13,17 +13,13 @@ public class Collectable : MonoBehaviour
 
     private void Update()
     {
-        if (objColliderToCollect == null)
-            print("null");
         if (isStarted)
         {
             ShowButton();
             UIManager.Instance.ChangeCollectableEnabled(true);
         }
         else
-        {
             UIManager.Instance.ChangeCollectableEnabled(false);
-        }
     }
 
     private void ShowButton()
@@ -56,13 +52,15 @@ public class Collectable : MonoBehaviour
         if (collision.CompareTag("finishQuest") && amountToCollect == collectedAmount && isStarted)
         {
             isStarted = false;
+
             for (int i = 0; i < amountToCollect; i++)
             {
-                //randomize the position of the object to collect
+                float randomOffsetX = Random.Range(-0.5f, 0.5f);
+                float randomOffsetY = Random.Range(-0.5f, 0.5f);
 
-                Instantiate(objectToCollect, transform.position, Quaternion.identity);
+                Vector3 randomizedPosition = collision.transform.position + new Vector3(randomOffsetX, randomOffsetY, 0);
+                Instantiate(objectToCollect, randomizedPosition, Quaternion.identity);
             }
-
         }
     }
 }

@@ -1,0 +1,5 @@
+C:/Users/user/Penguin Story 2D/.utmp/RelWithDebInfo/2a2u2535/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/user/Penguin Story 2D/.utmp/RelWithDebInfo/2a2u2535/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+C:/Users/user/Penguin Story 2D/.utmp/RelWithDebInfo/2a2u2535/armeabi-v7a/FramePacing/CMakeFiles/swappywrapper.dir
+C:/Users/user/Penguin Story 2D/.utmp/RelWithDebInfo/2a2u2535/armeabi-v7a/FramePacing/CMakeFiles/edit_cache.dir
+C:/Users/user/Penguin Story 2D/.utmp/RelWithDebInfo/2a2u2535/armeabi-v7a/FramePacing/CMakeFiles/rebuild_cache.dir
