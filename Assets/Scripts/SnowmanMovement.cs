@@ -12,12 +12,12 @@ public class SnowmanMovement : BaseMovenment
         if (transform.position.x > attackerPosition.x)
         {
             direction = Vector2.right;
-            targetPosition = transform.position + new Vector3(1, 0, 0);
+            targetPosition = transform.position + Vector3.right;
         }
         else
         {
             direction = Vector2.left;
-            targetPosition = transform.position + new Vector3(-1, 0, 0);
+            targetPosition = transform.position + Vector3.left;
         }
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, movementDistance, wallLayerMask);
 
