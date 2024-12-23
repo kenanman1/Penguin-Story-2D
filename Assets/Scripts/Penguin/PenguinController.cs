@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PenguinController : MonoBehaviour
 {
+    [SerializeField] private float attackTimer = 0.3f;
     private Rigidbody2D rigidbody;
     private PenguinAnimation penguinanimation;
 
@@ -13,6 +14,6 @@ public class PenguinController : MonoBehaviour
 
     public void Attack()
     {
-        penguinanimation.Attack(0.5f);
+        penguinanimation.Attack(attackTimer);
     }
 }

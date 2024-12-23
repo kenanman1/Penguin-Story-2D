@@ -2,6 +2,7 @@
 
 public class PenguinMovement : BaseMovenment
 {
+    private bool hasPlayedSplashSound = false;
     private Vector2 run;
 
     protected void FixedUpdate()
@@ -44,5 +45,20 @@ public class PenguinMovement : BaseMovenment
     {
         if (IsGrounded())
             rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpSpeed);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collider.IsTouchingLayers(LayerMask.GetMask("Water")) && !hasPlayedSplashSound)
+        {
+            AudioManager.instance.PlayWaterSplashSound();
+            hasPlayedSplashSound = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!collider.IsTouchingLayers(LayerMask.GetMask("Water")))
+            hasPlayedSplashSound = false;
     }
 }

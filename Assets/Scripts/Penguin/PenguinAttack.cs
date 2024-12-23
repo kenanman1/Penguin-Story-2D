@@ -8,11 +8,11 @@ public class PenguinAttack : BaseAttack
     {
         base.Start();
         penguinController = GetComponent<PenguinController>();
-        PenguinAnimation.onStopAttack += OnStopAttack;
     }
 
     public void OnAttack()
     {
+        AudioManager.instance.PlayAttackSound();
         attack = true;
         penguinController.Attack();
 

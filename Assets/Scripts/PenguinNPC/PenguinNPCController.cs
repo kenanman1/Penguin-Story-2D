@@ -2,27 +2,29 @@
 
 public class PenguinNPCController : MonoBehaviour
 {
-    [SerializeField] private float attackTimer = 4f;
+    public float attackTimer = 4f;
 
-    private BaseAnimation penguinAnimantion;
+    private PenguinNPCAnimantion penguinAnimantion;
     private PenguinNPCAttack penguinNPCAttack;
-    private NPCMovenment penguinNPCMovenment;
+    private NPCMovenment NPCMovenment;
 
     private void Awake()
     {
-        penguinAnimantion = GetComponent<BaseAnimation>();
+        penguinAnimantion = GetComponent<PenguinNPCAnimantion>();
         penguinNPCAttack = GetComponent<PenguinNPCAttack>();
-        penguinNPCMovenment = GetComponent<NPCMovenment>();
+        NPCMovenment = GetComponent<NPCMovenment>();
     }
 
     public void Attack()
     {
-        penguinNPCMovenment.StopMovement();
+        NPCMovenment.StopMovement();
         penguinAnimantion.Attack(attackTimer);
+        Invoke("NotAttack", attackTimer);
     }
 
     public void NotAttack()
     {
-        penguinNPCMovenment.ResumeMovement();
+        NPCMovenment.ResumeMovement();
+        GetComponent<PenguinNPCAttack>().AttackCompleted();
     }
 }

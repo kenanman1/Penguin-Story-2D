@@ -1,17 +1,17 @@
-using System;
 using UnityEngine;
 
 public class BaseAnimation : MonoBehaviour
 {
+    private Collider2D baseCollider;
     protected BoxCollider2D collider;
     public Animator animator;
     public bool isWalking = false;
     private LayerMask mapLayerMask;
     private LayerMask wallLayerMask;
-    public static Action onStopAttack;
 
     protected virtual void Start()
     {
+        baseCollider = GetComponent<Collider2D>();
         collider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         mapLayerMask = LayerMask.GetMask("map");
@@ -22,9 +22,15 @@ public class BaseAnimation : MonoBehaviour
     {
         SetRunningAnimation(isWalking);
         HandleJumpAnimation();
+        if (baseCollider.IsTouchingLayers(LayerMask.GetMask("Water")))
+        {
+            GetComponent<SpriteRenderer>().color = Color.cyan;
+        }
+        else
+            GetComponent<SpriteRenderer>().color = Color.white;
     }
 
-    private void HandleJumpAnimation()
+    protected void HandleJumpAnimation()
     {
         if (collider == null)
             return;
@@ -38,16 +44,15 @@ public class BaseAnimation : MonoBehaviour
         }
     }
 
-    public void Attack(float stopAttackTimer)
+    public virtual void Attack(float stopAttackTimer)
     {
-        animator.SetTrigger("attack");
+        animator.SetBool("attack", true);
         Invoke("StopAttack", stopAttackTimer);
     }
 
-    protected void StopAttack()
+    public virtual void StopAttack()
     {
-        animator.ResetTrigger("attack");
-        onStopAttack?.Invoke();
+        animator.SetBool("attack", false);
     }
 
     public void SetRunningAnimation(bool isRunning)

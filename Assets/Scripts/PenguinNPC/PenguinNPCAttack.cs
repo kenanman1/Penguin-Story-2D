@@ -2,15 +2,16 @@
 
 public class PenguinNPCAttack : BaseAttack
 {
-    private float attackChance = 0.2f;
+    private float attackChance = 0.8f;
     private float attackCooldown = 10f;
     private PenguinNPCController penguinNPCController;
+    private PenguinNPCAnimantion PenguinNPCAnimantion;
     private Vector2 currentScale;
 
     protected override void Start()
     {
         base.Start();
-        BaseAnimation.onStopAttack += AttackCompleted;
+        currentScale = transform.localScale;
         penguinNPCController = GetComponent<PenguinNPCController>();
     }
 
@@ -20,10 +21,7 @@ public class PenguinNPCAttack : BaseAttack
         {
             Rest();
             CheckForSnowman();
-            penguinNPCController.NotAttack();
-            return;
         }
-        penguinNPCController.Attack();
     }
 
     private void CheckForSnowman()
@@ -35,6 +33,7 @@ public class PenguinNPCAttack : BaseAttack
             currentScale = transform.localScale;
             attack = true;
             FaceTarget(snowman.transform.position);
+            penguinNPCController.Attack();
         }
     }
 
@@ -46,7 +45,7 @@ public class PenguinNPCAttack : BaseAttack
             transform.localScale = new Vector3(-1, 1, 1);
     }
 
-    private void AttackCompleted()
+    public void AttackCompleted()
     {
         attack = false;
         attackCooldown = 10f;
