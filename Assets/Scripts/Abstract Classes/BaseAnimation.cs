@@ -22,7 +22,7 @@ public class BaseAnimation : MonoBehaviour
     {
         SetRunningAnimation(isWalking);
         HandleJumpAnimation();
-        if (baseCollider.IsTouchingLayers(LayerMask.GetMask("Water")))
+        if (baseCollider != null && baseCollider.IsTouchingLayers(LayerMask.GetMask("Water")))
         {
             GetComponent<SpriteRenderer>().color = Color.cyan;
         }
