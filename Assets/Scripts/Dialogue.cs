@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Dialog : MonoBehaviour
+public class Dialogue : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private string[] dialogueLines;
@@ -12,13 +12,19 @@ public class Dialog : MonoBehaviour
     [SerializeField] private Button continueButton;
     [SerializeField] private bool isQuest;
     [SerializeField] private string questName;
+    [SerializeField] public bool hasToFinishQuest;
     private int index = 0;
     private bool isPlayerInRange;
     private bool isFinished = false;
 
+    private void Start()
+    {
+        Collectable.finishedQuest += () => hasToFinishQuest = false;
+    }
+
     private void Update()
     {
-        if (isPlayerInRange && !isFinished)
+        if (isPlayerInRange && !isFinished && hasToFinishQuest == false)
         {
             if (!dialoguePanel.activeInHierarchy)
             {

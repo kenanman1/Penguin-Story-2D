@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
+    public static Action finishedQuest;
     [SerializeField] private GameObject objectToCollect;
     [SerializeField] private GameObject buttonCollect;
     [SerializeField] public string tagToCollect;
@@ -51,12 +53,13 @@ public class Collectable : MonoBehaviour
     {
         if (collision.CompareTag("finishQuest") && amountToCollect == collectedAmount && isStarted)
         {
+            finishedQuest?.Invoke();
             isStarted = false;
 
             for (int i = 0; i < amountToCollect; i++)
             {
-                float randomOffsetX = Random.Range(-0.5f, 0.5f);
-                float randomOffsetY = Random.Range(-0.5f, 0.5f);
+                float randomOffsetX = UnityEngine.Random.Range(-0.5f, 0.5f);
+                float randomOffsetY = UnityEngine.Random.Range(-0.5f, 0.5f);
 
                 Vector3 randomizedPosition = collision.transform.position + new Vector3(randomOffsetX, randomOffsetY, 0);
                 Instantiate(objectToCollect, randomizedPosition, Quaternion.identity);
