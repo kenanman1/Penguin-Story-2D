@@ -19,6 +19,7 @@ public class Collectable : MonoBehaviour
         {
             ShowButton();
             UIManager.Instance.ChangeCollectableEnabled(true);
+            UIManager.Instance.UpdateCollectableText(collectedAmount, amountToCollect);
         }
         else
             UIManager.Instance.ChangeCollectableEnabled(false);
