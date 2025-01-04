@@ -1264,7 +1264,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC dialog
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

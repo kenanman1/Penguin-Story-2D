@@ -45,6 +45,7 @@ public class Collectable : MonoBehaviour
 
     public void OnCollect()
     {
+        AudioManager.instance.PlayCollectSound();
         Destroy(objColliderToCollect.gameObject);
         collectedAmount++;
         UIManager.Instance.UpdateCollectableText(collectedAmount, amountToCollect);

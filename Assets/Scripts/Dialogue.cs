@@ -2,95 +2,127 @@
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private string[] dialogueLines;
+    [SerializeField] private string[] failedQuestDialogueLines;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private Button continueButton;
     [SerializeField] private bool isQuest;
     [SerializeField] private string questName;
     [SerializeField] public bool hasToFinishQuest;
-    private int index = 0;
+    [SerializeField] private PlayableDirector playableDirector;
+    [SerializeField] private bool hasToDestroyObject;
+
+    private int currentLineIndex = 0;
     private bool isPlayerInRange;
-    private bool isFinished = false;
+    private bool isDialogueFinished = false;
+    private bool isFailedDialogueFinished = false;
 
     private void Start()
     {
         Collectable.finishedQuest += () => hasToFinishQuest = false;
+        continueButton.onClick.AddListener(HandleContinueButton);
     }
 
     private void Update()
     {
-        if (isPlayerInRange && !isFinished && hasToFinishQuest == false)
-        {
-            if (!dialoguePanel.activeInHierarchy)
-            {
-                dialoguePanel.SetActive(true);
-                StartCoroutine(Typing());
-            }
-            else if (dialogueText.text == dialogueLines[index])
-            {
-                continueButton.gameObject.SetActive(true);
-                continueButton.onClick.AddListener(() => OnClick());
-            }
-        }
+        if (!isPlayerInRange || dialoguePanel.activeInHierarchy || ShouldSkipDialogue())
+            return;
+
+        dialoguePanel.SetActive(true);
+        StartCoroutine(TypeLine());
     }
 
-    private void ZeroText()
+    private bool ShouldSkipDialogue()
     {
-        dialogueText.text = "";
-        index = 0;
-        dialoguePanel.SetActive(false);
-        continueButton.gameObject.SetActive(false);
+        return (isDialogueFinished && failedQuestDialogueLines.Length == 0) ||
+               (hasToFinishQuest && isFailedDialogueFinished) ||
+               (isDialogueFinished && isFailedDialogueFinished) ||
+               (!hasToFinishQuest && isDialogueFinished);
     }
 
-    private IEnumerator Typing()
+    private IEnumerator TypeLine()
     {
         continueButton.gameObject.SetActive(false);
         dialogueText.text = "";
-        foreach (char letter in dialogueLines[index].ToCharArray())
+
+        string[] currentLines = hasToFinishQuest ? failedQuestDialogueLines : dialogueLines;
+        foreach (char letter in currentLines[currentLineIndex].ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.06f);
         }
+
+        continueButton.gameObject.SetActive(true);
     }
 
-    public void NextLine()
+    private void HandleContinueButton()
     {
-        if (index < dialogueLines.Length - 1)
+        if (failedQuestDialogueLines.Length > 0 && hasToFinishQuest && dialogueText.text == failedQuestDialogueLines[currentLineIndex])
+            AdvanceLine();
+        else if (dialogueText.text == dialogueLines[currentLineIndex])
+            AdvanceLine();
+    }
+
+    private void AdvanceLine()
+    {
+        string[] currentLines = hasToFinishQuest ? failedQuestDialogueLines : dialogueLines;
+
+        if (currentLineIndex < currentLines.Length - 1)
         {
-            index++;
+            currentLineIndex++;
             StopAllCoroutines();
-            StartCoroutine(Typing());
+            StartCoroutine(TypeLine());
         }
         else
+            EndDialogue();
+    }
+
+    private void EndDialogue()
+    {
+        ResetDialogueState();
+        if (hasToDestroyObject)
+            GameManager.instance.DestroyObject();
+        if (hasToFinishQuest)
+            isFailedDialogueFinished = true;
+        else
         {
-            ZeroText();
-            isFinished = true;
-            if (isQuest)
-            {
-                FindObjectsByType<Collectable>(FindObjectsSortMode.None).FirstOrDefault(p => p.tagToCollect == questName).isStarted = true;
-            }
+            isDialogueFinished = true;
+            StartQuestOrTimeline();
         }
     }
 
-    public void OnClick()
+    private void ResetDialogueState()
     {
-        if (dialogueText.text == dialogueLines[index])
+        dialogueText.text = "";
+        currentLineIndex = 0;
+        dialoguePanel.SetActive(false);
+        continueButton.gameObject.SetActive(false);
+    }
+
+    private void StartQuestOrTimeline()
+    {
+        if (isQuest)
         {
-            NextLine();
+            var questCollectable = FindObjectsByType<Collectable>(FindObjectsSortMode.None)
+                .FirstOrDefault(p => p.tagToCollect == questName);
+            if (questCollectable != null)
+                questCollectable.isStarted = true;
         }
+
+        if (playableDirector != null)
+            playableDirector.Play();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-        {
             isPlayerInRange = true;
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -99,7 +131,7 @@ public class Dialogue : MonoBehaviour
         {
             isPlayerInRange = false;
             StopAllCoroutines();
-            ZeroText();
+            ResetDialogueState();
         }
     }
 }

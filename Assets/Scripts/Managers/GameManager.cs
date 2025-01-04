@@ -1,10 +1,21 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     [SerializeField] private GameObject portal;
+    [SerializeField] private List<GameObject> objectsToDestroy;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
 
     private void Start()
     {
@@ -29,7 +40,7 @@ public class GameManager : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (currentSceneIndex + 1 < SceneManager.sceneCountInBuildSettings)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1.5f);
             SceneManager.LoadScene(currentSceneIndex + 1);
         }
         else
@@ -39,5 +50,14 @@ public class GameManager : MonoBehaviour
     public void ButtonNextLevel()
     {
         StartCoroutine(LoadNextLevel());
+    }
+
+    public void DestroyObject()
+    {
+        if (objectsToDestroy.Count > 0)
+        {
+            Destroy(objectsToDestroy[0]);
+            objectsToDestroy.RemoveAt(0);
+        }
     }
 }
