@@ -4759,7 +4759,7 @@ PrefabInstance:
       objectReference: {fileID: 765618951}
     - target: {fileID: 749673233340250650, guid: e21cb48e71d208949bc8a42018c5791b, type: 3}
       propertyPath: objectsToDestroy.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 749673233340250650, guid: e21cb48e71d208949bc8a42018c5791b, type: 3}
       propertyPath: 'objectsToDestroy.Array.data[0]'
@@ -4769,6 +4769,10 @@ PrefabInstance:
       propertyPath: 'objectsToDestroy.Array.data[1]'
       value: 
       objectReference: {fileID: 576200766}
+    - target: {fileID: 749673233340250650, guid: e21cb48e71d208949bc8a42018c5791b, type: 3}
+      propertyPath: 'objectsToDestroy.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1140939173}
     - target: {fileID: 3498235773447988409, guid: e21cb48e71d208949bc8a42018c5791b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.504133
@@ -5256,6 +5260,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 1819087973}
+    - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: questName
       value: 
       objectReference: {fileID: 0}
@@ -5327,6 +5335,68 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 187712377}
   m_SourcePrefab: {fileID: 100100000, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
+--- !u!1 &1140939173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3626388264595341770, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+  m_PrefabInstance: {fileID: 1218842869}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1218842869
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3626388264595341770, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_Name
+      value: iceSpike (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 242.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.6475506
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
 --- !u!1 &1255921932 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3626388264595341770, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
@@ -8957,6 +9027,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1313020774376650330, guid: ce620a6d202aa8f4b9ecd180237930de, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 789764652}
+    - target: {fileID: 1313020774376650330, guid: ce620a6d202aa8f4b9ecd180237930de, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMenuButton
+      objectReference: {fileID: 0}
     - target: {fileID: 2148698163188277577, guid: ce620a6d202aa8f4b9ecd180237930de, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -9159,12 +9237,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5589137738627833970, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: m_Name
-      value: NPC dialog
+      value: Mr. P
       objectReference: {fileID: 0}
     - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: isQuest
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 1819087973}
     - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: questName
       value: cup
@@ -9301,6 +9383,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1819087973 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7773281019802253160, guid: ce620a6d202aa8f4b9ecd180237930de, type: 3}
+  m_PrefabInstance: {fileID: 1653350692}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1841391194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9529,12 +9622,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5589137738627833970, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: m_Name
-      value: NPC dialog (1)
+      value: Mr. P
       objectReference: {fileID: 0}
     - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: isQuest
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 1819087973}
     - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: questName
       value: 
@@ -9553,6 +9650,10 @@ PrefabInstance:
       objectReference: {fileID: 506746751}
     - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: hasToFinishQuest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
+      propertyPath: hasToDestroyObject
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
@@ -9803,7 +9904,7 @@ PrefabInstance:
       objectReference: {fileID: 956205485}
     - target: {fileID: 4766804523339681422, guid: c13652078fc9c99428b2eea7c23d5c49, type: 3}
       propertyPath: m_Volume
-      value: 0.08
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 4766804523339681422, guid: c13652078fc9c99428b2eea7c23d5c49, type: 3}
       propertyPath: m_Resource
@@ -10440,3 +10541,4 @@ SceneRoots:
   - {fileID: 830891662}
   - {fileID: 19224244114170968}
   - {fileID: 442843876}
+  - {fileID: 1218842869}

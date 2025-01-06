@@ -17,6 +17,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] public bool hasToFinishQuest;
     [SerializeField] private PlayableDirector playableDirector;
     [SerializeField] private bool hasToDestroyObject;
+    [SerializeField] private TextMeshProUGUI nameText;
 
     private int currentLineIndex = 0;
     private bool isPlayerInRange;
@@ -34,6 +35,7 @@ public class Dialogue : MonoBehaviour
         if (!isPlayerInRange || dialoguePanel.activeInHierarchy || ShouldSkipDialogue())
             return;
 
+        nameText.text = gameObject.name;
         dialoguePanel.SetActive(true);
         StartCoroutine(TypeLine());
     }
@@ -86,12 +88,13 @@ public class Dialogue : MonoBehaviour
     private void EndDialogue()
     {
         ResetDialogueState();
-        if (hasToDestroyObject)
-            GameManager.instance.DestroyObject();
+
         if (hasToFinishQuest)
             isFailedDialogueFinished = true;
         else
         {
+            if (hasToDestroyObject)
+                GameManager.instance.DestroyObject();
             isDialogueFinished = true;
             StartQuestOrTimeline();
         }

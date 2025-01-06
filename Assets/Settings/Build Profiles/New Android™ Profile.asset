@@ -318,7 +318,7 @@ MonoBehaviour:
     - line: '|   - m_BuildTarget: '
     - line: '|     m_Icons:'
     - line: '|     - serializedVersion: 2'
-    - line: '|       m_Icon: {fileID: 2800000, guid: 6b10da6e0cde12a4c90d1322334088b7,
+    - line: '|       m_Icon: {fileID: 2800000, guid: 87137016bed25d34588b59ba6c31269e,
         type: 3}'
     - line: '|       m_Width: 128'
     - line: '|       m_Height: 128'
@@ -902,7 +902,7 @@ MonoBehaviour:
         m_ExportAsGoogleAndroidProject: 0
         m_DebugSymbolLevel: 1
         m_DebugSymbolFormat: 5
-        m_CurrentDeploymentTargetId: __builtin__target_default
+        m_CurrentDeploymentTargetId: R5CW147CSQD
         m_BuildType: 2
         m_BuildAppBundle: 0
         m_IPAddressToConnect: 

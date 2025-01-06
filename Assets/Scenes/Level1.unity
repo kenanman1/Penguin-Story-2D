@@ -317,12 +317,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5589137738627833970, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: m_Name
-      value: NPC dialog (2)
+      value: Mr. P
       objectReference: {fileID: 0}
     - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: isQuest
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 2055766928}
     - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: questName
       value: fish
@@ -1835,12 +1839,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5589137738627833970, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: m_Name
-      value: NPC dialog (3)
+      value: Timmy
       objectReference: {fileID: 0}
     - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: isQuest
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 2055766928}
     - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: questName
       value: 
@@ -1859,6 +1867,10 @@ PrefabInstance:
       objectReference: {fileID: 1157533920}
     - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: hasToFinishQuest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
+      propertyPath: hasToDestroyObject
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
@@ -1888,6 +1900,14 @@ PrefabInstance:
     - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: 'dialogueLines.Array.data[5]'
       value: See you later, bye!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
+      propertyPath: failedQuestDialogueLines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
+      propertyPath: 'failedQuestDialogueLines.Array.data[0]'
+      value: I'm so hungry, please catch more fish for me
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -5625,6 +5645,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 933058697782937790, guid: b5474fda83a84194486ee9b828558d53, type: 3}
   m_PrefabInstance: {fileID: 1893417580}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1772449054 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 749673233340250650, guid: e21cb48e71d208949bc8a42018c5791b, type: 3}
+  m_PrefabInstance: {fileID: 4816269014056477324}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca021f3623c46cc498bb0829b93b06d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1780574832
 GameObject:
   m_ObjectHideFlags: 0
@@ -5762,8 +5793,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5589137738627833970, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: m_Name
-      value: NPC dialog
+      value: Mr. P
       objectReference: {fileID: 0}
+    - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 2055766928}
     - target: {fileID: 8842040596560421540, guid: 6ea924acb30fbbe40b37c2ae46cb323d, type: 3}
       propertyPath: dialogueText
       value: 
@@ -6164,11 +6199,92 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5474fda83a84194486ee9b828558d53, type: 3}
+--- !u!1 &1977092007 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3626388264595341770, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+  m_PrefabInstance: {fileID: 2048488838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1990222060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 933058697782937790, guid: b5474fda83a84194486ee9b828558d53, type: 3}
   m_PrefabInstance: {fileID: 509722601}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2048488838
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3626388264595341770, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_Name
+      value: iceSpike (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.352
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.57996905
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 48.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664416334068789755, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5046396c3cca4544fada55623bc9c627, type: 3}
+--- !u!114 &2055766928 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7773281019802253160, guid: ce620a6d202aa8f4b9ecd180237930de, type: 3}
+  m_PrefabInstance: {fileID: 3848692871507559205}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3848692871507559205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6177,6 +6293,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1313020774376650330, guid: ce620a6d202aa8f4b9ecd180237930de, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1772449054}
     - target: {fileID: 2148698163188277577, guid: ce620a6d202aa8f4b9ecd180237930de, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6285,10 +6405,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 963472171}
-    - target: {fileID: 7141985772785602110, guid: ce620a6d202aa8f4b9ecd180237930de, type: 3}
-      propertyPath: m_Name
-      value: Continue Dialogue Button
-      objectReference: {fileID: 0}
     - target: {fileID: 7735545365117342046, guid: ce620a6d202aa8f4b9ecd180237930de, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -6297,10 +6413,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 963472172}
-    - target: {fileID: 8289233222769339823, guid: ce620a6d202aa8f4b9ecd180237930de, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6324,7 +6436,7 @@ PrefabInstance:
       objectReference: {fileID: 238344090}
     - target: {fileID: 749673233340250650, guid: e21cb48e71d208949bc8a42018c5791b, type: 3}
       propertyPath: objectsToDestroy.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 749673233340250650, guid: e21cb48e71d208949bc8a42018c5791b, type: 3}
       propertyPath: 'objectsToDestroy.Array.data[0]'
@@ -6334,6 +6446,10 @@ PrefabInstance:
       propertyPath: 'objectsToDestroy.Array.data[1]'
       value: 
       objectReference: {fileID: 925744668}
+    - target: {fileID: 749673233340250650, guid: e21cb48e71d208949bc8a42018c5791b, type: 3}
+      propertyPath: 'objectsToDestroy.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1977092007}
     - target: {fileID: 3498235773447988409, guid: e21cb48e71d208949bc8a42018c5791b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.504133
@@ -6743,3 +6859,4 @@ SceneRoots:
   - {fileID: 6659304917987465978}
   - {fileID: 514670616}
   - {fileID: 925744667}
+  - {fileID: 2048488838}
