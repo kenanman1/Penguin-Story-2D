@@ -47,8 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a064ffedc6c42344488d02bd30364f15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainAudio: {fileID: 0}
   water_splash: {fileID: 4292530072485454137}
   attackSound: {fileID: 9066139403271858154}
+  collectSound: {fileID: 0}
+  competitionSound: {fileID: 0}
 --- !u!82 &4292530072485454137
 AudioSource:
   m_ObjectHideFlags: 0
@@ -159,7 +162,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 46f4b30dab435394ebaa51f329fb700c, type: 3}
   m_Resource: {fileID: 8300000, guid: 46f4b30dab435394ebaa51f329fb700c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.04
+  m_Volume: 0.08
   m_Pitch: 1
   Loop: 1
   Mute: 0

@@ -17,8 +17,12 @@ public class PenguinAttack : BaseAttack
         penguinController.Attack();
 
         Collider2D snowman = Physics2D.OverlapCircle(transform.position, checkRadius, snowmanLayer);
+        Collider2D enemy = Physics2D.OverlapCircle(transform.position, checkRadius, enemyLayer);
+
         if (snowman != null)
             AttackSnowman(snowman.gameObject);
+        if (enemy != null)
+            AttackEnemy(enemy.gameObject);
     }
 
     private void OnStopAttack()
@@ -29,5 +33,10 @@ public class PenguinAttack : BaseAttack
     private void AttackSnowman(GameObject snowman)
     {
         snowman.GetComponent<SnowmanMovement>().Move(transform.position);
+    }
+
+    private void AttackEnemy(GameObject enemy)
+    {
+        enemy.GetComponent<EnemyHealth>().TakeDamage();
     }
 }

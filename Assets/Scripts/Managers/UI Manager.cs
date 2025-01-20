@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
     [SerializeField] private TextMeshProUGUI collectableText;
     [SerializeField] private TextMeshProUGUI countDownText;
+    [SerializeField] private TextMeshProUGUI timerText;
 
     private void Awake()
     {
@@ -17,7 +18,23 @@ public class UIManager : MonoBehaviour
 
     public void UpdateCollectableText(int collectableCount, int toCollect)
     {
-        collectableText.text = $"Collected: {collectableCount}/{toCollect}";
+        if (collectableText != null)
+        {
+            string[] arr = collectableText.text.Split(":");
+            collectableText.text = $"{arr[0]}: {collectableCount}/{toCollect}";
+        }
+    }
+
+    public void UpdateTimerText(float time)
+    {
+        if (timerText != null)
+        {
+            timerText.text = $"Time: {time.ToString("F2")}";
+            if (time <= 0)
+                timerText.gameObject.SetActive(false);
+            else
+                timerText.gameObject.SetActive(true);
+        }
     }
 
     public void ChangeCollectableEnabled(bool isEnabled)

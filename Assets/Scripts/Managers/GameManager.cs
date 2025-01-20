@@ -44,9 +44,9 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    public IEnumerator LoadNextLevel(bool loadSpecificLevel = false, int levelIndex = 1)
+    public IEnumerator LoadNextLevel(float timeToLoad = 1.1f, bool loadSpecificLevel = false, int levelIndex = 1)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(timeToLoad);
         int highestLevelReached = PlayerPrefs.GetInt("levelReached", 0);
         int targetLevelIndex = loadSpecificLevel ? levelIndex : SceneManager.GetActiveScene().buildIndex + 1;
         if (targetLevelIndex > highestLevelReached)
@@ -66,14 +66,19 @@ public class GameManager : MonoBehaviour
     {
         if (objectsToDestroy.Count > 0)
         {
-            Destroy(objectsToDestroy[0]);
-            objectsToDestroy.RemoveAt(0);
+            GameObject obj = objectsToDestroy[0];
+
+            LeanTween.alpha(obj, 0f, 1f).setOnComplete(() =>
+            {
+                Destroy(obj);
+                objectsToDestroy.RemoveAt(0);
+            });
         }
     }
 
     public void ButtonNextLevel()
     {
-        StartCoroutine(LoadNextLevel());
+        StartCoroutine(LoadNextLevel(0.4f));
     }
 
     public void ButtonSelectLevelCanvas()
@@ -85,12 +90,12 @@ public class GameManager : MonoBehaviour
 
     public void OnLevelButtonClicked(int levelIndex)
     {
-        StartCoroutine(LoadNextLevel(true, levelIndex));
+        StartCoroutine(LoadNextLevel(0.4f, true, levelIndex));
     }
 
     public void BackToMenuButton()
     {
-        StartCoroutine(LoadNextLevel(true, 0));
+        StartCoroutine(LoadNextLevel(0.4f, true, 0));
     }
 
     public void ButtonExit()

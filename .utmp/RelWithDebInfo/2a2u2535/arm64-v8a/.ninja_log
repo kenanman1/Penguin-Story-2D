@@ -1,3 +1,5 @@
 # ninja log v5
 1	853	7545115957136088	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	23f362463c41591a
 855	1071	7545115960147245	C:/Users/user/Penguin Story 2D/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2a2u2535/obj/arm64-v8a/libswappywrapper.so	19bde73c340e873d
+4	518	7578830039890237	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	23f362463c41591a
+519	974	7578830044495553	C:/Users/user/Penguin Story 2D/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2a2u2535/obj/arm64-v8a/libswappywrapper.so	19bde73c340e873d

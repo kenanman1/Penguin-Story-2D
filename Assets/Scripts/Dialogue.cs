@@ -57,7 +57,7 @@ public class Dialogue : MonoBehaviour
         foreach (char letter in currentLines[currentLineIndex].ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(0.06f);
+            yield return new WaitForSeconds(0.03f);
         }
 
         continueButton.gameObject.SetActive(true);

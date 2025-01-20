@@ -7,9 +7,9 @@ public class Collectable : MonoBehaviour
     [SerializeField] private GameObject objectToCollect;
     [SerializeField] private GameObject buttonCollect;
     [SerializeField] public string tagToCollect;
-    [SerializeField] private int amountToCollect;
+    [SerializeField] public int amountToCollect;
     public bool isStarted = false;
-    private int collectedAmount = 0;
+    public int collectedAmount = 0;
     private Collider2D objColliderToCollect;
     private float distanceToCollect = 2f;
 
@@ -53,12 +53,14 @@ public class Collectable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("finishQuest") && amountToCollect == collectedAmount && isStarted)
+        if (collision.CompareTag("finishQuest") && collectedAmount >= amountToCollect && isStarted)
         {
             finishedQuest?.Invoke();
             isStarted = false;
 
-            for (int i = 0; i < amountToCollect; i++)
+            if (objectToCollect == null)
+                return;
+            for (int i = 0; i < collectedAmount; i++)
             {
                 float randomOffsetX = UnityEngine.Random.Range(-0.5f, 0.5f);
                 float randomOffsetY = UnityEngine.Random.Range(-0.5f, 0.5f);
