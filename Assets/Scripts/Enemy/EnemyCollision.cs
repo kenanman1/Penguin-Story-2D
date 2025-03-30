@@ -11,6 +11,7 @@ public class EnemyCollision : MonoBehaviour
         }
         else if (collision.CompareTag("fish"))
         {
+            GetComponent<EnemyMovement>().speed = 0;
             GetComponent<EnemyMovement>().targetPosition = null;
             Destroy(collision.gameObject);
             Collectable collectable = FindFirstObjectByType<Collectable>();
@@ -19,6 +20,10 @@ public class EnemyCollision : MonoBehaviour
             {
                 ObjectPoolManager.Instance.ReturnObject(gameObject);
             });
+        }
+        else if(collision.CompareTag("wall"))
+        {
+            GetComponent<EnemyMovement>().speed *= -1;
         }
     }
 }

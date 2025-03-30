@@ -12,6 +12,7 @@ TagManager:
   - cup
   - target
   - enemy
+  - wall
   layers:
   - Default
   - TransparentFX

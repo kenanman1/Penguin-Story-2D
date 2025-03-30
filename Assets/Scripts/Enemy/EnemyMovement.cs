@@ -34,5 +34,9 @@ public class EnemyMovement : BaseMovenment
                 transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             transform.position = newPosition;
         }
+        else
+        {
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+        }
     }
 }

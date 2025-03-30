@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI collectableText;
     [SerializeField] private TextMeshProUGUI countDownText;
     [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI healthText;
 
     private void Awake()
     {
@@ -40,6 +41,14 @@ public class UIManager : MonoBehaviour
     public void ChangeCollectableEnabled(bool isEnabled)
     {
         collectableText.gameObject.SetActive(isEnabled);
+    }
+
+    public void UpdateHealthText(int health)
+    {
+        if (healthText != null)
+        {
+            healthText.text = $"Health: {health}";
+        }
     }
 
     public void StartCountdown()

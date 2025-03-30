@@ -32,7 +32,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage()
     {
-        float damage = Random.Range(5, 20);
+        float damage = Random.Range(10, 25);
         health -= damage;
         damageText.text = damage.ToString();
 

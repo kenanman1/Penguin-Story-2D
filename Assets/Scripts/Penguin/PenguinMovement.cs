@@ -51,6 +51,7 @@ public class PenguinMovement : BaseMovenment
     {
         if (collider.IsTouchingLayers(LayerMask.GetMask("Water")) && !hasPlayedSplashSound)
         {
+            rigidbody.gravityScale = 0.5f;
             AudioManager.instance.PlayWaterSplashSound();
             hasPlayedSplashSound = true;
         }
@@ -59,6 +60,9 @@ public class PenguinMovement : BaseMovenment
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (!collider.IsTouchingLayers(LayerMask.GetMask("Water")))
+        {
             hasPlayedSplashSound = false;
+            rigidbody.gravityScale = 1;
+        }
     }
 }
