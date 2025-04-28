@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyMovement : BaseMovenment
+public class EnemyMovement : BaseMovement
 {
     public GameObject targetPosition;
 
@@ -8,11 +8,6 @@ public class EnemyMovement : BaseMovenment
     {
         base.Start();
         targetPosition = GameObject.FindGameObjectWithTag("target");
-    }
-
-    void Update()
-    {
-        
     }
 
     private void FixedUpdate()
@@ -36,7 +31,7 @@ public class EnemyMovement : BaseMovenment
         }
         else
         {
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
+            transform.Translate(Vector2.right * speed * Time.fixedDeltaTime);
         }
     }
 }

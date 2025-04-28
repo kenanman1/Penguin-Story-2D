@@ -6,13 +6,13 @@ public class PenguinNPCController : MonoBehaviour
 
     private PenguinNPCAnimantion penguinAnimantion;
     private PenguinNPCAttack penguinNPCAttack;
-    private NPCMovenment NPCMovenment;
+    private NPCMovement NPCMovenment;
 
     private void Awake()
     {
         penguinAnimantion = GetComponent<PenguinNPCAnimantion>();
         penguinNPCAttack = GetComponent<PenguinNPCAttack>();
-        NPCMovenment = GetComponent<NPCMovenment>();
+        NPCMovenment = GetComponent<NPCMovement>();
     }
 
     public void Attack()

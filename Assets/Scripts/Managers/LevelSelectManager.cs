@@ -4,25 +4,28 @@ using UnityEngine.UI;
 public class LevelSelectManager : MonoBehaviour
 {
     [SerializeField] private Button[] levelButtons;
+    private Color unlockedColor = Color.white;
+    private Color lockedColor = Color.gray;
+    private Image[] _buttonImages;
+    private const string LevelReachedKey = "levelReached";
 
     private void Start()
     {
-        int levelReached = PlayerPrefs.GetInt("levelReached", 1);
+        _buttonImages = new Image[levelButtons.Length];
+        for (int i = 0; i < levelButtons.Length; i++)
+        {
+            _buttonImages[i] = levelButtons[i].GetComponent<Image>();
+        }
+
+        int levelReached = PlayerPrefs.GetInt(LevelReachedKey, 1);
 
         for (int i = 0; i < levelButtons.Length; i++)
         {
-            int index = i;
-            levelButtons[index].onClick.AddListener(() => GameManager.instance.OnLevelButtonClicked(index + 1));
-            if (i + 1 <= levelReached)
-            {
-                levelButtons[i].interactable = true;
-                levelButtons[i].GetComponent<Image>().color = Color.white;
-            }
-            else
-            {
-                levelButtons[i].interactable = false;
-                levelButtons[i].GetComponent<Image>().color = Color.gray;
-            }
+            int levelIndex = i + 1;
+            levelButtons[levelIndex].onClick.AddListener(() => GameManager.instance.OnLevelButtonClicked(levelIndex + 1));
+            bool isUnlocked = (levelIndex <= levelReached);
+            levelButtons[i].interactable = isUnlocked;
+            _buttonImages[i].color = isUnlocked ? unlockedColor : lockedColor;
         }
     }
 }

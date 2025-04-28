@@ -14,22 +14,6 @@ public class EnemyHealth : MonoBehaviour
         maxHealth = health;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void CheckPosition()
-    {
-        Vector3 currentDirection = transform.position - lastPosition;
-        if (currentDirection != Vector3.zero)
-        {
-            lastDirection = currentDirection.normalized;
-        }
-        lastPosition = transform.position;
-    }
-
     public void TakeDamage()
     {
         float damage = Random.Range(10, 25);

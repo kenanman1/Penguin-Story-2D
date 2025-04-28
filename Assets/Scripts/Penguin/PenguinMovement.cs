@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PenguinMovement : BaseMovenment
+public class PenguinMovement : BaseMovement
 {
     private bool hasPlayedSplashSound = false;
     private Vector2 run;

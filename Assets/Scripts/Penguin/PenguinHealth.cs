@@ -3,40 +3,54 @@ using UnityEngine;
 
 public class PenguinHealth : MonoBehaviour
 {
+    [Header("Settings")]
+    [SerializeField] private int health = 3;
+    [SerializeField] private float immunityDuration = 5f;
+    private float maxImmunity;
+    private int maxHealth;
     private CinemachineImpulseSource impulse;
-    [SerializeField] public int health = 3;
-    private float immunity = 1;
     private bool isDead = false;
 
     private void Start()
     {
         impulse = GetComponent<CinemachineImpulseSource>();
+        maxImmunity = immunityDuration;
+        maxHealth = health;
     }
 
     private void Update()
     {
-        if (immunity > 0)
-            immunity -= Time.deltaTime;
+        if (isDead)
+            return;
+        if (immunityDuration > 0)
+            immunityDuration -= Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "enemy" && immunity <= 0 && !isDead)
+        if (collision.CompareTag("enemy") && immunityDuration <= 0 && !isDead)
         {
-            health--;
-            UIManager.Instance.UpdateHealthText(health);
-            impulse.GenerateImpulse();
-            if (health <= 0)
+            TakeDamage();
+            if (maxHealth <= 0)
             {
                 Die();
                 return;
             }
             else
             {
-                LeanTween.alpha(gameObject, 0f, 0.4f).setEase(LeanTweenType.easeInOutSine).setLoopPingPong(3);
-                immunity = 5;
+                LeanTween.color(gameObject, Color.red, 0.3f)
+                .setLoopPingPong(3)
+                .setEase(LeanTweenType.easeInOutSine);
+                immunityDuration = maxImmunity;
             }
         }
+    }
+
+    private void TakeDamage()
+    {
+        maxHealth--;
+        UIManager.Instance.UpdateHealthText(health);
+        impulse.GenerateImpulse();
     }
 
     private void Die()

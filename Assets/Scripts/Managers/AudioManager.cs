@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource collectSound;
     [SerializeField] private AudioSource competitionSound;
     private bool isCompetition = false;
-    public static AudioManager instance;
+    public static AudioManager instance { get; private set; }
 
     private void Awake()
     {

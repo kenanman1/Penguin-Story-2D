@@ -1,7 +1,13 @@
 using UnityEngine;
 
-public class NPCMovenment : BaseMovenment
+public class NPCMovement : BaseMovement
 {
+    [Header("Timers")]
+    [SerializeField] private float minWalkTime = 5f;
+    [SerializeField] private float maxWalkTime = 20f;
+    [SerializeField] private float minStayTime = 5f;
+    [SerializeField] private float maxStayTime = 20f;
+
     public float stayTime;
     public float walkTime;
     public bool stop = false;
@@ -34,14 +40,14 @@ public class NPCMovenment : BaseMovenment
     {
         if (walkTime > 0)
         {
-            walkTime -= Time.deltaTime;
+            walkTime -= Time.fixedDeltaTime;
             penguinBaseAnimation.isWalking = true;
-            transform.Translate(speed * Time.deltaTime, 0, 0);
+            transform.Translate(speed * Time.fixedDeltaTime, 0, 0);
         }
         else if (stayTime > 0)
         {
             penguinBaseAnimation.isWalking = false;
-            stayTime -= Time.deltaTime;
+            stayTime -= Time.fixedDeltaTime;
         }
         else
             ResetTimers();
@@ -49,8 +55,8 @@ public class NPCMovenment : BaseMovenment
 
     private void ResetTimers()
     {
-        walkTime = Random.Range(10, 20);
-        stayTime = Random.Range(10, 20);
+        walkTime = Random.Range(minWalkTime, maxWalkTime);
+        stayTime = Random.Range(minStayTime, maxStayTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
